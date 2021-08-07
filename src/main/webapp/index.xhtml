@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<body>
+    <h:form>
+        <p:inputText value="#{indexBean.name}" />
+        <p:commandButton value="Add" actionListener="#{indexBean.add}" ajax="dt_names"/>
+
+        <p:dataTable id="dt_names" value="#{indexBean.list}" var="e">
+            <p:column>
+                <h:outputText value="#{e}"/>
+            </p:column>
+
+            <p:column>
+                <p:commandButton value="Remove" actionListener="#{indexBean.remove(e)}" update="dt_names"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</body>
+</html>
